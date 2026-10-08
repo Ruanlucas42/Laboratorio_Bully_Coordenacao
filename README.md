@@ -2,6 +2,11 @@
 
 Implementação didática do Algoritmo do Valentão (Bully) em Python 3, baseada no roteiro **Laboratório Prático - Coordenação em Sistemas Distribuídos**. Cinco processos se comunicam por sockets TCP para eleger um coordenador, detectar sua indisponibilidade e realizar novas eleições.
 
+## Autores
+
+- Alice Egg
+- Ruan Lucas
+
 ## Como funciona
 
 Ao iniciar uma eleição, um processo envia `ELECTION` a todos os processos com ID maior que o seu. Se receber `OK`, desiste e deixa os processos maiores continuarem a eleição. Se nenhum responder `OK`, torna-se coordenador e anuncia seu ID aos demais com `COORDINATOR:<ID>`.
@@ -138,5 +143,4 @@ Cada terminal apresenta sua **visão local** da eleição. O iniciador indicado 
 Quando um processo desiste sem ainda conhecer o vencedor, o diagrama informa que está aguardando `COORDINATOR`. Ao receber o anúncio, apresenta a versão atualizada. Se o anúncio chegar durante os envios, ele será incluído no diagrama apresentado ao término da eleição local.
 
 Os registros de envio indicam tentativas, inclusive para processos desligados. A ordem e os horários variam devido à execução concorrente. Os eventos ficam em memória e são reiniciados a cada nova eleição local; não são gravados automaticamente em arquivo.
-
 
